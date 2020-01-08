@@ -36,6 +36,19 @@ public class Noticia {
 	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Integer idTema;
 	
+	public Noticia(Integer id, @NotNull @Size(min = 1, max = 100) String titular,
+			@NotNull @Size(min = 1, max = 500) String cabecera, Date fecha) {
+		super();
+		this.id = id;
+		this.titular = titular;
+		this.cabecera = cabecera;
+		this.fecha = fecha;
+	}
+
+	public Noticia() {
+		super();
+	}
+
 	public Integer getIdTema() {
 		return idTema;
 	}
@@ -75,10 +88,5 @@ public class Noticia {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
 	
-	
-	
-	
-
 }
