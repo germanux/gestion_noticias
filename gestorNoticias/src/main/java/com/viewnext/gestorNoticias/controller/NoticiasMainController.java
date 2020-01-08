@@ -23,7 +23,7 @@ public class NoticiasMainController {
 
 	final static String url = "172.16.2.17";
 	
-	final static String uriApiJson = "http://" + url + ":8081/api/json/noticias";
+	final static String uriApiJson = "http://" + url + ":8083/api/json/noticias";
 	
 	public static class ListaUsuario extends ArrayList<Noticia> {
 
