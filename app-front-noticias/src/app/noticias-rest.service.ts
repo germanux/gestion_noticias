@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuariosRestService {
+export class NoticiasRestService {
 
   url = 'http://localhost:8081/api/json/usuarios';
 
