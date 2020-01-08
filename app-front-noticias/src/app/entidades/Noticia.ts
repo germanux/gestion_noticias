@@ -2,6 +2,6 @@ export class Noticia {
   public id: number;
   public titular: string;
   public cabecera: string;
-  public fecha: Date;
+  public fecha: string;
   public idTemaRef: number;
 }
