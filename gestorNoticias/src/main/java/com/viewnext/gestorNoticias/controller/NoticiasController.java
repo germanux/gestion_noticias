@@ -19,7 +19,7 @@ import com.viewnext.gestorNoticias.entities.Noticia;
 import com.viewnext.gestorNoticias.model.AlmacenDAONoticias;
 
 @RestController()
-@RequestMapping("/api/noticias")
+@RequestMapping("/api/json/noticias")
 @CrossOrigin("*")
 public class NoticiasController {
 
