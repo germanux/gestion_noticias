@@ -38,6 +38,7 @@ public class GestionNoticiasMainController {
 	
 	@Autowired
 	private AlmacenDAOUsuarios dao;
+	private AlmacenDAOTemasDeUsuarios temasDeUsuariosDao;
 	
 	public static class ListaUsuario extends ArrayList<Usuario>{
 
@@ -142,5 +143,18 @@ public class GestionNoticiasMainController {
 		dao.delete(usuario);
 		// Es equivalente a :
 		// dao.deleteById(t.getId());
+	}
+	
+	@PostMapping()
+	public Usuario anadirTemaPrefAUsuario(@RequestParam Integer usuarioId, 
+										@RequestParam Integer temaId) {
+		Usuario usuario = new Usuario(null, nombre, email, password);
+		// HttpEntity<Usuario> peticionHttp = new HttpEntity<Usuario>(usuario);
+		
+		RestTemplate restTemplate = new RestTemplate();
+
+		usuario = restTemplate.postForObject(uriApiJson, usuario, Usuario.class);	
+			
+		return usuario;
 	}
 }

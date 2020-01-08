@@ -24,6 +24,8 @@ public interface AlmacenDAOTemasDeUsuarios
 
 	public List<TemaDeUsuario> findTemasPorUsuarioHQL(Integer idUsuario);
 	
+	public void findTemasPorUsuarioHQL(Integer idUsuario);
+	
 	@Transactional
 	@Modifying
 	@Query(value="DELETE FROM tema_de_usuario WHERE id_usuario = ?1",
