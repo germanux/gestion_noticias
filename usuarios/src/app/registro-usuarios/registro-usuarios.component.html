@@ -1,0 +1,31 @@
+<br>
+<div>
+    <p>
+
+        <li>
+            <ul> <label>Nombre: </label>&nbsp;
+                <!--Double-Data-Binding "["" para recibir y "("" para enviar-->
+                <input type="text" [(ngModel)]="nombre" value="Nombre Por Defecto" /></ul>
+
+            <ul>
+                <label>Email: </label>&nbsp;
+                <!--Double-Data-Binding-->
+                <input type="email" [(ngModel)]="email" value="Email Por Defecto" />
+            </ul>
+            <ul>
+                <label>Password: </label>&nbsp;
+                <!--Double-Data-Binding-->
+                <input type="password" [(ngModel)]="password" value="Password Por Defecto" />
+            </ul>
+            <ul>
+                <label>Tema preferido: </label>&nbsp;
+                <!--Double-Data-Binding-->
+                <input type="number" [(ngModel)]="idTemaPreferido" value="idTemaPreferido Por Defecto" />
+            </ul>
+            <ul>
+                <button type="button" (click)="registrar()">Registrar</button> &nbsp;
+                <button type="button" routerLink="/listarTodos">Listar todos</button>
+            </ul>
+        </li>
+    </p>
+</div>
