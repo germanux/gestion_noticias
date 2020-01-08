@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Noticia {
@@ -15,8 +16,10 @@ public class Noticia {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
 	private String titular;
 	
+	@NotNull
 	private String cabecera;
 	
 	public Integer getId() {
