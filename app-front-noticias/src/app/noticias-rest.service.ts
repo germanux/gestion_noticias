@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class NoticiasRestService {
 
-  url = 'http://localhost:8081/api/json/noticias';
+  url = 'http://localhost:8083/api/json/noticias';
 
   listaNoticia: Noticia[];
 
