@@ -60,15 +60,7 @@ public class Usuario /*implements Serializable*/ {
 			columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date timestamp;
-	
-	/*private int edad;
-	
-	public int getEdad() {
-		return edad;
-	}
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}*/
+
 	public Usuario() {
 		super();
 	}

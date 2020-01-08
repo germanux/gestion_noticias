@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import com.viewnext.apiusuarios.entidades.Tema;
-import com.viewnext.apiusuarios.entidades.TemaDeUsuario;
-import com.viewnext.apiusuarios.entidades.TemaDeUsuarioPK;
+import com.viewnext.apiGestionNoticias.entidades.TemaDeUsuario;
+import com.viewnext.apiGestionNoticias.entidades.TemaDeUsuarioPK;
+
 
 
 public interface AlmacenDAOTemasDeUsuarios 

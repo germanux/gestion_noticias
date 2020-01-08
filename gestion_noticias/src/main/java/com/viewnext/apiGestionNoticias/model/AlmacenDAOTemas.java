@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.viewnext.apiusuarios.entidades.Tema;
+import com.viewnext.apiGestionNoticias.entidades.Tema;
+
+
 
 public interface AlmacenDAOTemas 
 	extends JpaRepository<Tema, Integer> {

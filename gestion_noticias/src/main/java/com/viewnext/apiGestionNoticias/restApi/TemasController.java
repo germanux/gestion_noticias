@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.viewnext.apiusuarios.entidades.Tema;
-import com.viewnext.apiusuarios.entidades.Usuario;
-import com.viewnext.apiusuarios.model.AlmacenDAOTemas;
-import com.viewnext.apiusuarios.model.AlmacenDAOUsuarios;
+import com.viewnext.apiGestionNoticias.entidades.Tema;
+import com.viewnext.apiGestionNoticias.model.AlmacenDAOTemas;
+
+
 
 @RestController()
 @RequestMapping("/api/temas")
@@ -45,6 +45,7 @@ public class TemasController {
 
 		return dao.saveAll(temas);	// Devuelve con ID
 	}
+	
 	@GetMapping
 	public List<Tema> leerTodos(			
 			@RequestParam(name = "usuario", required = false) 
@@ -103,7 +104,6 @@ public class TemasController {
 		
 		return dao.save(t);
 	}
-
 }
 
 
