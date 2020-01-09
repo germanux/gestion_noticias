@@ -26,10 +26,6 @@ export class RegistroNoticiaComponent implements OnInit {
   }
 
   ngOnInit() {
-    let obserConDatos: Observable<Noticia[]> = this.notRest.getTodos();
-    // Le decimos al objeto Observable que cuando reciba datos,
-    // invoque a esta función callback
-    obserConDatos.subscribe( datos => this.listaNoticia = datos);
   }
 
   enviarDatos() {
@@ -43,4 +39,5 @@ export class RegistroNoticiaComponent implements OnInit {
   pulsar() {
     this.noticia.titular = this.titular;
   }
+
 }
