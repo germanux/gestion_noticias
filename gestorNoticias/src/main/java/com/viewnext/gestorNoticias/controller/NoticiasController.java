@@ -1,6 +1,6 @@
 package com.viewnext.gestorNoticias.controller;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.viewnext.gestorNoticias.controller.NoticiasMainController.ListaUsuario;
 import com.viewnext.gestorNoticias.entities.Noticia;
 import com.viewnext.gestorNoticias.model.AlmacenDAONoticias;
 
@@ -30,6 +29,12 @@ public class NoticiasController {
 	final static String url = "172.16.2.17";
 	
 	final static String uriApiJson = "http://" + url + ":8083/api/json/noticias";
+	
+	public static class ListaNoticia extends ArrayList<Noticia> {
+
+		private static final long serialVersionUID = -2471719372400122954L;
+		
+	}
 	
 	@Autowired
 	private AlmacenDAONoticias daoNoticias;
@@ -67,7 +72,7 @@ public class NoticiasController {
 
 		RestTemplate restTemplate = new RestTemplate();
 
-		listaTotal = restTemplate.getForObject(uriApiJson, ListaUsuario.class);
+		listaTotal = restTemplate.getForObject(uriApiJson, ListaNoticia.class);
 
 		return listaTotal;
 	}
