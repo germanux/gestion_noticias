@@ -1,1 +1,24 @@
-<p>lista-usuarios works!</p>
+<br>
+<div>
+
+
+    <li><label>Listado de usuarios:</label></li>
+    <li *ngFor="let usu of listaUsu">
+
+        <ul>
+            {{usu.id + ", " + usu.nombre + " - " +usu.email}}
+
+            <input type="button" value="X" (click)="eliminar(usu.id)" /> &nbsp;
+            <button type="button" [routerLink]="['/modificar', usu.id]">Modificar usuario</button>
+
+        </ul>
+
+    </li>
+
+    <ul>
+        <nav>
+            <button type="button" routerLink="/menuPrincipal">Volver</button>
+        </nav>
+    </ul>
+
+</div>
