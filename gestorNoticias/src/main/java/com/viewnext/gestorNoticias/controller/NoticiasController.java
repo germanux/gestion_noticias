@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.viewnext.apiusuarios.entidades.Usuario;
 import com.viewnext.gestorNoticias.entities.Noticia;
 import com.viewnext.gestorNoticias.model.AlmacenDAONoticias;
 
