@@ -1,23 +1,38 @@
 <p>Formulario de registro de Noticias!</p>
-
-<div>
-  <a type="text"  value="" minlength="30">Noticia -></a>
-  <input type="text" [(ngModel)]="noticia.titular" value="" placeholder="Noticia"/><br><br>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="'http://localhost:4201" matTooltip="Tooltip!">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Temas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br><br>
+<div class="md-form">
+  <label for="form1" class="">Noticia</label>
+  <input mdbInput type="text" id="form1" [(ngModel)]="noticia.titular" class="form-control" placeholder="Noticia"/><br><br>
 </div>
-<div>
-  <a type="text"  value="" minlength="30">Cabecera -></a>
-  <input type="text" [(ngModel)]="noticia.cabecera" value="" placeholder="Cabecera"/><br><br>
+<div class="md-form">
+  <label for="form2" class="">Cabecera</label>
+  <input mdbInput type="text" id="form2" [(ngModel)]="noticia.cabecera" class="form-control" placeholder="Cabecera"/><br><br>
 </div>
-<div>
-  <a type="text"  value="" minlength="30">Fecha -></a>
-  <input type="text" [(ngModel)]="noticia.fecha" value="" placeholder="Fecha"/><br><br>
+<div class="md-form">
+  <label for="form3" class="">Fecha</label>
+  <input  mdbInput type="text" id="form3" [(ngModel)]="noticia.fecha" class="form-control" placeholder="Fecha"/><br><br>
 </div>
-<div>
-  <a type="text"  value="" minlength="30">Número Tema Ref -></a>
-  <input type="number" [(ngModel)]="noticia.idTemaRef" value="" placeholder="Numero Tema Ref"/><br><br>
+<div class="md-form">
+  <label for="form4" class="">Numero Tema Ref</label>
+  <input  mdbInput type="number" id="form4" [(ngModel)]="noticia.idTemaRef" class="form-control" placeholder="Numero Tema Ref"/><br><br>
 </div>
-<div>
-  <input type="button" value="Enviar Datos" (click) ="enviarDatos()"/><br><br>
+<div class="md-form">
+  <button mat-raised-button class="btn btn-success" (click) ="enviarDatos()">Registrar Noticia</button><br><br>
 </div>
 
 <div *ngIf="!estaRegistrada">Aún no se ha registrado</div><br>

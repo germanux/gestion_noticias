@@ -37,4 +37,5 @@ export class RegistroNoticiaComponent implements OnInit {
   pulsar() {
     this.noticia.titular = this.titular;
   }
+
 }
