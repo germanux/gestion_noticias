@@ -29,7 +29,7 @@ export class UsuarioModComponent implements OnInit {
 
     this.srvUsu.modify(usuario).subscribe(usuRecibido => {
     this.usuario = usuRecibido;
-    alert(`Usuario con id ${usuRecibido.id} eliminado`);
+    alert(`Usuario con id ${usuRecibido.id} modificado`);
     this.ngOnInit();
   });
 

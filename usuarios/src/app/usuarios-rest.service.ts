@@ -44,7 +44,7 @@ export class UsuariosRestService {
 
   modify(usuario: Usuario): Observable<Usuario>{
 
-    let observableHttp = this.clienteHttp.put<Usuario>(this.url, usuario);
+    let observableHttp = this.clienteHttp.put<Usuario>(`${this.url}/${usuario.id}`, usuario);
 
     return observableHttp;
   }

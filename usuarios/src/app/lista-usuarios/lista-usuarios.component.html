@@ -6,7 +6,7 @@
     <li *ngFor="let usu of listaUsu">
 
         <ul>
-            {{usu.id + ", " + usu.nombre + " - " +usu.email}}
+            {{usu.id + ", " + usu.nombre + " - " +usu.email + " - " + usu.idTemaPreferido}}
 
             <input type="button" value="X" (click)="eliminar(usu.id)" /> &nbsp;
             <button type="button" [routerLink]="['/modificar', usu.id]">Modificar usuario</button>
