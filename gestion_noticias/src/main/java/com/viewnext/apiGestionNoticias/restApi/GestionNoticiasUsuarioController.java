@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,21 +21,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.viewnext.apiGestionNoticias.entidades.Tema;
+import com.viewnext.apiGestionNoticias.entidades.TemaDeUsuario;
+import com.viewnext.apiGestionNoticias.entidades.TemaDeUsuarioPK;
 import com.viewnext.apiGestionNoticias.entidades.Usuario;
 import com.viewnext.apiGestionNoticias.model.AlmacenDAOTemasDeUsuarios;
 import com.viewnext.apiGestionNoticias.model.AlmacenDAOUsuarios;
-
-
 
 // cliente REST de API Json y XML,
 // a la vez q es un API general
 @RestController
 @RequestMapping("/api/main/usuarios")
 @CrossOrigin()
-public class GestionNoticiasMainController {
+public class GestionNoticiasUsuarioController {
 	
-	final static String url = "172.16.2.14";
-	final String uriApiJson = "http://" + url + ":8081/api/usuarios";
+	// final static String url = "172.16.2.17";
+	// final String uriApiJson = "http://" + url + ":8081/api/usuarios";
 	// final String uriApiXML = "http://" + url + ":8082/api/xml/usuarios";
 	
 	@Autowired
@@ -45,54 +46,43 @@ public class GestionNoticiasMainController {
 
 		private static final long serialVersionUID = 1L;}
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Usuario> leerTodosTodos() {
-		
-		List<Usuario> listaTotal;
-		RestTemplate resTemplate = new RestTemplate();
-		
-		// invocamos metodo GET http sobre API json 0.0.1
-		// y se encarga de des-serializar JSON en un ArrList
-		listaTotal = resTemplate.getForObject(uriApiJson, ListaUsuario.class);
-		
-		// TODO : pedir todos del API XML + añadir a listaTotal
-		
-		// invocamos metodo GET http sobre API json 0.0.2
-		// y se encarga de des-serializar JSON en un ArrList
-		// + AÑADIMOS A listaTotal;
-		//listaTotal.addAll(resTemplate.getForObject(uriApiXML, ListaUsuario.class));
-		
-		return listaTotal;
+	@RequestMapping(value="/{id}", method = {RequestMethod.GET /*, RequestMethod.POST */} )
+	public Usuario getUsuario(@PathVariable Integer id) {
+		System.out.println(">>>> GET - ID RECIBIDO " + id);
+		//TODO Optional
+		Optional<Usuario> usu = dao.findById(id);
+		return usu.orElse(null);
 	}
 	
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = {MediaType.APPLICATION_JSON_VALUE,
-						MediaType.APPLICATION_XML_VALUE
-						})
-	public Usuario crearUsuario(@RequestBody Usuario usuario, 
-								@RequestParam String api) {
-		
-		RestTemplate restTemplate = new RestTemplate();
-		usuario = restTemplate.postForObject(uriApiJson, usuario, Usuario.class);	
-		
-		return usuario;
+	@GetMapping
+	public List<Usuario> leerTodos() {
+		return dao.findAll();
 	}
 	
-	@PostMapping(value="form")
-	public Usuario crearUsuarioPorParam(@RequestParam String nombre, 
-										@RequestParam String email,
-										@RequestParam String password) {
-		
-		Usuario usuario = new Usuario(null, nombre, email, password);
-		// HttpEntity<Usuario> peticionHttp = new HttpEntity<Usuario>(usuario);
-		
-		RestTemplate restTemplate = new RestTemplate();
-
-		usuario = restTemplate.postForObject(uriApiJson, usuario, Usuario.class);	
-			
-		return usuario;
+	@PostMapping()
+	public Usuario crearUsuario(@RequestBody Usuario usuario) {	
+		// Recibe sin ID en el BODY de la petición HTTP y deserializa el JSON a un obj Usuario
+		return dao.save(usuario);	// Devuelve con ID
 	}
 	
+	/** Captura un formulario
+	 * 
+	 * @param id
+	 * @param name
+	 */
+	@PostMapping(value="/formulario") // Subruta /formulario porque la raiz con POST ya está cogida
+	public Usuario crearUsuarioPorParam(
+			//@RequestParam Integer id, 
+			@RequestParam (name="nombre") String elNombreDelUsu, 
+			@RequestParam String email,
+			@RequestParam String password) 
+	{
+		Usuario usu = new Usuario(null, elNombreDelUsu, email, password);
+		System.out.println(">>>> crearUsuarioPorParam ");
+		
+		return dao.save(usu);
+	}
+		
 	/*
 	@PostMapping(value="form")
 	public Usuario modificarUsuarioPorParam(@RequestParam Integer id, 
@@ -123,18 +113,25 @@ public class GestionNoticiasMainController {
 		return usuario;
 	} */
 	
+	@PutMapping()
+	public Usuario modificarUsuario(@RequestBody Usuario usuario) {	
+		// Recibe sin ID en el BODY de la petición HTTP y deserializa el JSON a un obj Usuario
+		return dao.save(usuario);	// Devuelve con ID
+	}
+	
 	@RequestMapping(value="/{id}", method = RequestMethod.PUT )
-	public Usuario modificarUsuario(@PathVariable Integer id, @RequestBody Usuario usuarioAModificar) {
+	public Usuario modificarUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
 		System.out.println(">>>> MODIFICAR ID RECIBIDO " + id);
 
-		usuarioAModificar.setId(id);		
-		return dao.save(usuarioAModificar);
+		usuario.setId(id);		
+		return dao.save(usuario);
 	}
 	
 	@DeleteMapping(value="/{id}") 
 	public void eliminarUsuario(@PathVariable Integer id) {
 		System.out.println(">>>> ELIMINAR ID RECIBIDO " + id);
-
+		
+		temasDeUsuariosDao.deleteByUsuario(id);
 		dao.deleteById(id);
 	}
 
@@ -143,13 +140,34 @@ public class GestionNoticiasMainController {
 		System.out.println(">>>> DELETE ");
 		dao.delete(usuario);
 		// Es equivalente a :
-		// dao.deleteById(t.getId());
+		// dao.deleteById(usuario.getId());
 	}
 	
-	@PostMapping()
-	public void anadirTemaPrefAUsuario(@RequestParam Integer usuarioId, 
-										@RequestParam Integer temaId) {
-		System.out.println(">>>> Añadir tema " + temaId + " a Usuario : " + usuarioId);
-		temasDeUsuariosDao.anadirTemaPrefAUsuario(usuarioId, temaId);
+	@GetMapping(value="/{idUsuario}/temas_usu")
+	public List<TemaDeUsuario> getTemasDeUsuario(@PathVariable Integer idUsuario) 
+	{
+		System.out.println(">>>> getTemasDeUsuario - ID RECIBIDO " + idUsuario);
+		
+		List<TemaDeUsuario> temasUsu = //  daoTemasUsu.findTemasDeUnUsuario(idUsuario);
+				temasDeUsuariosDao.findTemasPorUsuarioHQL(idUsuario);
+		return temasUsu;
+	}
+	
+	@PostMapping(value = "/{id}/temas/{idt}")
+	public TemaDeUsuario addTemaDeUsuario(@PathVariable Integer idUsuario,
+			@PathVariable(name = "idt") Integer idTema) {
+		
+		TemaDeUsuario nuevoTema = new TemaDeUsuario(idUsuario, idTema);
+				
+		return temasDeUsuariosDao.save(nuevoTema);
+	}
+	
+	@DeleteMapping(value = "/{id}/temas/{idt}")
+	public String deleteTemaDeUsuario(@PathVariable Integer idUsuario,
+			@PathVariable(name = "idt") Integer idTema) {
+		
+		temasDeUsuariosDao.deleteById(new TemaDeUsuarioPK(idUsuario, idTema));
+		//daoTemasUsu.delete(id, idTema);
+		return "Tema de usuario borrado";
 	}
 }

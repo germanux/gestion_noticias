@@ -41,7 +41,7 @@ public interface AlmacenDAOTemasDeUsuarios
 	// WHERE condition;
 	@Transactional
 	@Modifying
-	@Query(value="UPDATE tema_de_usuario SET usuario=?, tema=? "
+	@Query(value="UPDATE tema_de_usuario SET usuario=?1, tema=?1 "
 			+ "WHERE id_usuario = ?1",
 			nativeQuery=true)
 	public void anadirTemaPrefAUsuario(Integer idUsuario, Integer tema);
