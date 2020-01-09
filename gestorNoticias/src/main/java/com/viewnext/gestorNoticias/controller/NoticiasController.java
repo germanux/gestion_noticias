@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.viewnext.apiusuarios.entidades.Usuario;
 import com.viewnext.gestorNoticias.entities.Noticia;
 import com.viewnext.gestorNoticias.model.AlmacenDAONoticias;
 
@@ -53,12 +54,13 @@ public class NoticiasController {
 	
 	@DeleteMapping(value = "/{id}")
 	public void deleteNoticia(@PathVariable Integer id) {
-		//daoNoticiasTemasUsu.deleteByNoticia(id);
 		daoNoticias.deleteById(id);
 	}
 	
-	@PutMapping()
-	public Noticia modificarNoticia(@RequestBody Noticia noticia) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public Noticia modificarUsuario(@PathVariable Integer id, @RequestBody Noticia noticia) {
+	
+		noticia.setId(id);
 		return daoNoticias.save(noticia);
 	}
 

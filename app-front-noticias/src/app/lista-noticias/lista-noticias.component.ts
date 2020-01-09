@@ -33,7 +33,7 @@ export class ListaNoticiasComponent implements OnInit {
 
   modificarNoticia(id: number, noticia: Noticia) {
     this.srvNot.modificar(id, noticia).subscribe((u) => {
-      alert(`**Noticia** -> ${noticia.titular}, con **ID** -> ${noticia.id} ha sido modificada`);
+      alert(`**Noticia** -> ${noticia}, con **ID** -> ${id} ha sido modificada`);
       this.ngOnInit();
     });
   }

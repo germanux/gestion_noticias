@@ -9,7 +9,7 @@ spring:
 # Actualiza a�adiendo columnas pero no regenera la tabla
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 # Cuando hay cambios, elimina la tabla y datos, y la vuelve a crear
 # jpa:
