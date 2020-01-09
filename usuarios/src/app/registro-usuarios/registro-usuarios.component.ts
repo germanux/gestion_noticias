@@ -20,6 +20,10 @@ export class RegistroUsuariosComponent implements OnInit {
   constructor(public usuSrv: UsuariosRestService) { }
 
   ngOnInit() {
+    this.nombre = null ;
+    this.email = null;
+    this.password = null;
+    this.idTemaPreferido = null;
   }
 
   registrar(){
@@ -33,7 +37,8 @@ export class RegistroUsuariosComponent implements OnInit {
     //Llama al servicio Rest
     this.usuSrv.registro(this.usuario).subscribe(usuRegistrado =>{ 
       this.usuario = usuRegistrado; 
-    alert(`Usuario registrado con ID: ${usuRegistrado.id}`)});
+    alert(`Usuario registrado con ID: ${usuRegistrado.id}`);
+    this.ngOnInit()});
 
     
   }

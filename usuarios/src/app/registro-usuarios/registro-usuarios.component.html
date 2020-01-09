@@ -2,7 +2,9 @@
 <div>
     <p>
 
-        <li>
+        <li><label>Formulario de Registro:</label>
+            <br>
+            <br>
             <ul> <label>Nombre: </label>&nbsp;
                 <!--Double-Data-Binding "["" para recibir y "("" para enviar-->
                 <input type="text" [(ngModel)]="nombre" value="Nombre Por Defecto" /></ul>
@@ -23,8 +25,10 @@
                 <input type="number" [(ngModel)]="idTemaPreferido" value="idTemaPreferido Por Defecto" />
             </ul>
             <ul>
-                <button type="button" (click)="registrar()">Registrar</button> &nbsp;
-                <button type="button" routerLink="/listarTodos">Listar todos</button>
+                <nav>
+                    <button type="button" (click)="registrar()">Registrar</button> &nbsp;
+                    <button type="button" routerLink="/menuPrincipal">Volver</button>
+                </nav>
             </ul>
         </li>
     </p>
