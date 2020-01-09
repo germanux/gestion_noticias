@@ -26,14 +26,14 @@ export class ListaNoticiasComponent implements OnInit {
 
   eliminarNoticia(id: number) {
     this.srvNot.eliminar(id).subscribe(() => {
-      alert(`Noticia con id ${id} eliminado`);
+      alert(`Noticia con id ${id} eliminada`);
       this.ngOnInit();
     });
   }
 
   modificarNoticia(id: number, noticia: Noticia) {
     this.srvNot.modificar(id, noticia).subscribe((u) => {
-      alert(`**Noticia** -> ${noticia.titular}, con **ID** -> ${noticia.id} y **MAIL** -> ha sido modificado`);
+      alert(`**Noticia** -> ${noticia.titular}, con **ID** -> ${noticia.id} ha sido modificada`);
       this.ngOnInit();
     });
   }

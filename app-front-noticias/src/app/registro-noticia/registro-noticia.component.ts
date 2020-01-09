@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Noticia } from '../entidades/Noticia';
 import { NoticiasRestService } from '../noticias-rest.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-noticia',
@@ -11,6 +12,9 @@ export class RegistroNoticiaComponent implements OnInit {
 
   fecha = '20/20/2020';
   titular = 'Javi Terro';
+  cabecera = 'Vamos Atleti Campeon';
+  idTemaRef = 1;
+
   estaRegistrada = false;
 
   noticia: Noticia = new Noticia();
@@ -23,7 +27,6 @@ export class RegistroNoticiaComponent implements OnInit {
   }
 
   enviarDatos() {
-    this.noticia.titular = this.titular;
 
     this.notRest.registro(this.noticia).subscribe( (notRecibida) => {
       this.noticia = notRecibida;
@@ -33,6 +36,5 @@ export class RegistroNoticiaComponent implements OnInit {
 
   pulsar() {
     this.noticia.titular = this.titular;
-    // this.usuario: any = () => (datos => this.usuario.nombre);
   }
 }

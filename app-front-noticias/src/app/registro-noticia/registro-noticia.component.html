@@ -1,11 +1,14 @@
-<p>registro-noticia works!</p>
+<p>Formulario de registro de Noticias!</p>
 
-<input type="text" [(ngModel)]="noticia.nombre" value="" placeholder="Nombre por Defecto"/><br><br>
-<input type="email" [(ngModel)]="noticia.email" value="" placeholder="Email"/><br><br>
-<input type="password" [(ngModel)]="noticia.password" value="" placeholder="Password"/><br><br>
-<input type="button" value="Enviar Datos" (click) = "enviarDatos()"/><br><br>
+<div>
+  <input type="text" [(ngModel)]="noticia.titular" value="" placeholder="Noticia"/><br><br>
+  <input type="text" [(ngModel)]="noticia.cabecera" value="" placeholder="Cabecera"/><br><br>
+  <input type="text" [(ngModel)]="noticia.fecha" value="" placeholder="Fecha"/><br><br>
+  <input type="number" [(ngModel)]="noticia.idTemaRef" value="" placeholder="Numero Tema Ref"/><br><br>
+  <input type="button" value="Enviar Datos" (click) ="enviarDatos()"/><br><br>
+</div>
+
 <div *ngIf="!estaRegistrada">Aún no se ha registrado</div>
 <div *ngIf="estaRegistrada">Ya se ha registrado : ID: {{noticia.id}}</div>
 
-<input type="text" [(ngModel)]="variable"/>
 <input type="button" value="Boton" (click) = "pulsar()"/>

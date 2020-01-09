@@ -31,14 +31,15 @@ public class Noticia {
 	@Size(min = 1, max = 500)
 	private String cabecera;
 	
-	@Temporal(TemporalType.DATE)
-	private Date fecha;
+	@NotNull
+	@Size(min = 1, max = 500)
+	private String fecha;
 	
 	@Column(name="id_noticia_tema", insertable = true, updatable = true)
 	private Integer idTema;
 	
 	public Noticia(Integer id, @NotNull @Size(min = 1, max = 100) String titular,
-			@NotNull @Size(min = 1, max = 500) String cabecera, Date fecha) {
+			@NotNull @Size(min = 1, max = 500) String cabecera, String fecha) {
 		super();
 		this.id = id;
 		this.titular = titular;
@@ -82,11 +83,11 @@ public class Noticia {
 		this.cabecera = cabecera;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	

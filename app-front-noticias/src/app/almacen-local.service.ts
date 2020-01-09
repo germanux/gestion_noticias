@@ -9,8 +9,7 @@ export class AlmacenLocalService {
 
   public guardar(nombre: string, objDatos: any): void {
 
-    // tslint:disable-next-line: prefer-const
-    let textoJsonNot = JSON.stringify(objDatos);
+    const textoJsonNot = JSON.stringify(objDatos);
     window.localStorage.setItem(nombre, textoJsonNot);
 
   }
