@@ -30,7 +30,7 @@ import com.viewnext.apiGestionNoticias.model.AlmacenDAOUsuarios;
 // cliente REST de API Json y XML,
 // a la vez q es un API general
 @RestController
-@RequestMapping("/api/main/usuarios")
+@RequestMapping("/api/usuarios")
 @CrossOrigin()
 public class GestionNoticiasUsuarioController {
 	
