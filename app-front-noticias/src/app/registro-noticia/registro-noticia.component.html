@@ -1,0 +1,25 @@
+<p>Formulario de registro de Noticias!</p>
+
+<div>
+  <a type="text"  value="" minlength="30">Noticia -></a>
+  <input type="text" [(ngModel)]="noticia.titular" value="" placeholder="Noticia"/><br><br>
+</div>
+<div>
+  <a type="text"  value="" minlength="30">Cabecera -></a>
+  <input type="text" [(ngModel)]="noticia.cabecera" value="" placeholder="Cabecera"/><br><br>
+</div>
+<div>
+  <a type="text"  value="" minlength="30">Fecha -></a>
+  <input type="text" [(ngModel)]="noticia.fecha" value="" placeholder="Fecha"/><br><br>
+</div>
+<div>
+  <a type="text"  value="" minlength="30">Número Tema Ref -></a>
+  <input type="number" [(ngModel)]="noticia.idTemaRef" value="" placeholder="Numero Tema Ref"/><br><br>
+</div>
+<div>
+  <input type="button" value="Enviar Datos" (click) ="enviarDatos()"/><br><br>
+</div>
+
+<div *ngIf="!estaRegistrada">Aún no se ha registrado</div><br>
+<div *ngIf="estaRegistrada">Ya se ha registrado : ID: {{noticia.id}}</div><br>
+

@@ -93,3 +93,7 @@ local.properties
 .scala_dependencies
 .worksheet
 .settings
+
+node_modules/
+dist/
+

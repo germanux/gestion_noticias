@@ -1,0 +1,14 @@
+<h3><strong>Listado de Noticias:</strong></h3>
+<ul>
+    <li *ngFor="let not of listaNot">
+        <label>Noticia ->  </label>
+        <input type="text" [(ngModel)]="not.id"/>
+        <input type="text" [(ngModel)]="not.titular"/>
+        <input type="text" [(ngModel)]="not.cabecera"/>
+        <input type="text" [(ngModel)]="not.fecha"/>
+        <input type="text" [(ngModel)]="not.idTemaRef" placeholder="Tema Referencia"/>
+        <input type="button" value="Modificar" (click) = "modificarNoticia(not.id, not)"/>
+        <input type="button" value="Eliminar" (click) = "eliminarNoticia(not.id)"/>
+    </li>
+</ul>
+
