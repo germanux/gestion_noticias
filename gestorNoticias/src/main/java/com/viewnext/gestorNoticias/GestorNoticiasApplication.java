@@ -8,6 +8,8 @@ public class GestorNoticiasApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestorNoticiasApplication.class, args);
+		
+		System.out.println("---- SPRING ARRANCADO ----");
 	}
 
 }
