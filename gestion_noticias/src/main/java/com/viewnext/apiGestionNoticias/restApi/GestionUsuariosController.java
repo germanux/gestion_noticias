@@ -37,9 +37,9 @@ public class GestionUsuariosController {
 	// final static String url = "172.16.2.17";
 	// final String uriApiJson = "http://" + url + ":8081/api/usuarios";
 	// final String uriApiXML = "http://" + url + ":8082/api/xml/usuarios";
-	
 	@Autowired
 	private AlmacenDAOUsuarios dao;
+	@Autowired
 	private AlmacenDAOTemasDeUsuarios temasDeUsuariosDao;
 	
 	public static class ListaUsuario extends ArrayList<Usuario>{
