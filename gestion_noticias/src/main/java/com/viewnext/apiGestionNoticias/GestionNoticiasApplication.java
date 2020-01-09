@@ -8,6 +8,7 @@ public class GestionNoticiasApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestionNoticiasApplication.class, args);
+		System.out.println("** GESTION DE TEMAS Y USUARIOS");
 	}
 
 }

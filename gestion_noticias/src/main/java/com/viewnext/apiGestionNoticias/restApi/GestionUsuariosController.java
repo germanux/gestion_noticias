@@ -30,9 +30,9 @@ import com.viewnext.apiGestionNoticias.model.AlmacenDAOUsuarios;
 // cliente REST de API Json y XML,
 // a la vez q es un API general
 @RestController
-@RequestMapping("/api/main/usuarios")
+@RequestMapping("/api/usuarios")
 @CrossOrigin()
-public class GestionNoticiasUsuarioController {
+public class GestionUsuariosController {
 	
 	// final static String url = "172.16.2.17";
 	// final String uriApiJson = "http://" + url + ":8081/api/usuarios";
