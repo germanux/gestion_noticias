@@ -24,8 +24,6 @@ public interface AlmacenDAOTemasDeUsuarios
 
 	public List<TemaDeUsuario> findTemasPorUsuarioHQL(Integer idUsuario);
 	
-	public void findTemasPorUsuarioHQL(Integer idUsuario);
-	
 	@Transactional
 	@Modifying
 	@Query(value="DELETE FROM tema_de_usuario WHERE id_usuario = ?1",
@@ -37,4 +35,14 @@ public interface AlmacenDAOTemasDeUsuarios
 	public void delete(Integer idU, Integer idT) {
 		deleteById(new TemaDeUsuarioPK(idU, idT));
 	}; */
+	
+	// UPDATE table_name
+	// SET column1 = value1, column2 = value2, ...
+	// WHERE condition;
+	@Transactional
+	@Modifying
+	@Query(value="UPDATE tema_de_usuario SET usuario=?1, tema=?1 "
+			+ "WHERE id_usuario = ?1",
+			nativeQuery=true)
+	public void anadirTemaPrefAUsuario(Integer idUsuario, Integer tema);
 }
