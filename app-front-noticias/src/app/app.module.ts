@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ListaNoticiasComponent } from './lista-noticias/lista-noticias.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegistroNoticiaComponent } from './registro-noticia/registro-noticia.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegistroNoticiaComponent } from './registro-noticia/registro-noticia.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

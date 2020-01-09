@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Noticia } from '../entidades/Noticia';
 import { NoticiasRestService } from '../noticias-rest.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-registro-noticia',
@@ -18,12 +19,17 @@ export class RegistroNoticiaComponent implements OnInit {
   estaRegistrada = false;
 
   noticia: Noticia = new Noticia();
+  listaNoticia: Noticia[];
 
   constructor(private notRest: NoticiasRestService) {
     this.noticia = new Noticia();
   }
 
   ngOnInit() {
+    let obserConDatos: Observable<Noticia[]> = this.notRest.getTodos();
+    // Le decimos al objeto Observable que cuando reciba datos,
+    // invoque a esta función callback
+    obserConDatos.subscribe( datos => this.listaNoticia = datos);
   }
 
   enviarDatos() {
