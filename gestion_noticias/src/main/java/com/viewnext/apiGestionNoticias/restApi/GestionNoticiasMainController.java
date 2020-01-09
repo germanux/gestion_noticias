@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.viewnext.apiGestionNoticias.entidades.Tema;
 import com.viewnext.apiGestionNoticias.entidades.Usuario;
+import com.viewnext.apiGestionNoticias.model.AlmacenDAOTemasDeUsuarios;
 import com.viewnext.apiGestionNoticias.model.AlmacenDAOUsuarios;
 
 
@@ -146,15 +147,9 @@ public class GestionNoticiasMainController {
 	}
 	
 	@PostMapping()
-	public Usuario anadirTemaPrefAUsuario(@RequestParam Integer usuarioId, 
+	public void anadirTemaPrefAUsuario(@RequestParam Integer usuarioId, 
 										@RequestParam Integer temaId) {
-		Usuario usuario = new Usuario(null, nombre, email, password);
-		// HttpEntity<Usuario> peticionHttp = new HttpEntity<Usuario>(usuario);
-		
-		RestTemplate restTemplate = new RestTemplate();
-
-		usuario = restTemplate.postForObject(uriApiJson, usuario, Usuario.class);	
-			
-		return usuario;
+		System.out.println(">>>> Añadir tema " + temaId + " a Usuario : " + usuarioId);
+		temasDeUsuariosDao.anadirTemaPrefAUsuario(usuarioId, temaId);
 	}
 }
